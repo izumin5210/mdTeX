@@ -1,0 +1,11 @@
+src: src
+temp: tmp
+dest: dist
+images: images
+root_file: document.tex
+command:
+  tex2dvi: 'platex -synctex=1 -interaction=nonstopmode -file-line-error-style -shell-escape'
+  dvi2pdf: 'dvipdfmx -d 5'
+  bibtex: 'pbibtex'
+  preview: '/usr/bin/open -a TeXShop.app'
+
