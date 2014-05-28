@@ -1,6 +1,8 @@
-require "mdtex/version"
-Dir[File.join(File.dirname(__FILE__), 'mdtex/tasks', '**/*.rake')].each { |rake| load rake }
+require 'mdtex/version'
+require 'mdtex/util'
+require 'capture_std'
 
 module Mdtex
-  # Your code goes here...
 end
+
+Dir[File.join(File.dirname(__FILE__), 'mdtex/tasks', '**/*.rake')].each { |rake| load rake }

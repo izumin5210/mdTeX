@@ -8,4 +8,4 @@ command:
   dvi2pdf: 'dvipdfmx -d 5'
   bibtex: 'pbibtex'
   preview: '/usr/bin/open -a TeXShop.app'
-
+bibtex: false
