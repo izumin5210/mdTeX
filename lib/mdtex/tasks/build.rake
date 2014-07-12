@@ -2,10 +2,11 @@ include Mdtex::load_config
 
 verbose false
 
-directory TEMP_DIR
-directory DEST_DIR
 desc "Build #{PDF_FILE} into #{File.basename(DEST_DIR)}"
 task build: File.join(DEST_DIR, PDF_FILE)
+
+directory TEMP_DIR
+directory DEST_DIR
 
 # Copy SRC_DIR/* (exclude *.md) to TEMP_DIR
 rule %r{^#{TEMP_DIR}/(?!.+\.md$)} => "%{^#{TEMP_DIR},#{SRC_DIR}}p" do |task|
@@ -46,6 +47,6 @@ file File.join(TEMP_DIR, PDF_FILE) => File.join(TEMP_DIR, DVI_FILE) do |task|
 end
 
 # Copy PDF_FILE to DEST_DIR
-file File.join(DEST_DIR, PDF_FILE) => File.join(TEMP_DIR, PDF_FILE) do |task|
+file File.join(DEST_DIR, PDF_FILE) => [File.join(TEMP_DIR, PDF_FILE), DEST_DIR] do |task|
   cp task.prerequisites[0], DEST_DIR
 end
